@@ -190,12 +190,14 @@ class UIController {
                 ))
                 this.onSystemContext("MENU", rpc.params.appID)
                 return true
-            case "OnButtonSubscription":
+            case "SubscribeButton":
                 store.dispatch(subscribeButton(
                     rpc.params.appID,
-                    rpc.params.name,
-                    rpc.params.isSubscribed
+                    rpc.params.buttonName,
+                    true
                 ))
+                const appID = store.getState().activeApp;
+                this.listener.send(RpcFactory.SubscribeButton(appID, rpc.params.buttonName));
                 return null
             case "PerformInteraction":
                 if (!rpc.params.choiceSet) {
@@ -971,6 +973,11 @@ class UIController {
             }]);
         }
     }
+    // subscribeButton(buttonName) {
+    //     const state = store.getState()
+    //     const appID = state.activeApp;
+    //     this.listener.send(RpcFactory.SubscribeButton(appID, buttonName))
+    // }
 }
 
 let controller = new UIController ()

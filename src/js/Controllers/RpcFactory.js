@@ -594,6 +594,16 @@ class RpcFactory {
             }
         })
     }
+    static SubscribeButton(appID, buttonName) {
+        return ({
+            "jsonrpc": "2.0",
+            "method": "Buttons.SubscribeButton",
+            "params": {
+                "appID": appID,
+                "buttonName": buttonName
+            }
+        })
+    }
     static MixingAudioResponse(rpc) {
         return ({
             "jsonrpc": "2.0",
