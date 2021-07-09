@@ -196,7 +196,10 @@ class UIController {
                     rpc.params.buttonName,
                     true
                 ))
-                this.listener.send(RpcFactory.SubscribeButton(rpc.params.appID, rpc.params.buttonName));
+                if(!rpc.params.buttonName || !rpc.params.appID) {
+                    this.listener.send(RpcFactory.ErrorResponse(rpc, 12, "No button provide to subscribe"))
+                }
+                this.listener.send(RpcFactory.SuccessResponse(rpc));
                 return null
             case "PerformInteraction":
                 if (!rpc.params.choiceSet) {
