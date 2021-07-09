@@ -196,8 +196,7 @@ class UIController {
                     rpc.params.buttonName,
                     true
                 ))
-                const appID = store.getState().activeApp;
-                this.listener.send(RpcFactory.SubscribeButton(appID, rpc.params.buttonName));
+                this.listener.send(RpcFactory.SubscribeButton(rpc.params.appID, rpc.params.buttonName));
                 return null
             case "PerformInteraction":
                 if (!rpc.params.choiceSet) {
@@ -973,11 +972,6 @@ class UIController {
             }]);
         }
     }
-    // subscribeButton(buttonName) {
-    //     const state = store.getState()
-    //     const appID = state.activeApp;
-    //     this.listener.send(RpcFactory.SubscribeButton(appID, buttonName))
-    // }
 }
 
 let controller = new UIController ()
