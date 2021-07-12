@@ -198,7 +198,8 @@ class UIController {
                 ))
                 const GENERIC_ERROR = 22;
                 if(!rpc.params.buttonName || !rpc.params.appID) {
-                    this.listener.send(RpcFactory.ErrorResponse(rpc, GENERIC_ERROR, "No button provide to subscribe"))
+                    this.listener.send(RpcFactory.ErrorResponse(rpc, GENERIC_ERROR, "No button provide to subscribe"));
+                    return;
                 }
                 this.listener.send(RpcFactory.SuccessResponse(rpc));
                 return null
