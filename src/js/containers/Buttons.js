@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
     }
 
     var buttons = []
-    if (softButtons.length > 0) {
+    if (softButtons.length > 0 && subscribedButtons.CUSTOM_BUTTON === true) {
         buttons.push({
             class: "tertiary",
             name: "CUSTOM_BUTTON",
